@@ -1,0 +1,9 @@
+# Changelog
+
+- All notable changes to this project will be documented in this file.
+
+### Added
+## [0.0.1] - 2026-03-10
+
+- First version release for the c++ introduction branch, added initial files.
+
