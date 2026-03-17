@@ -1,0 +1,10 @@
+^C:\USERS\FELIP\DEVELOPMENT\CPP\CPP_GAME_DEV\STORE_APP\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/felip/development/cpp/cpp_game_dev/store_app -BC:/Users/felip/development/cpp/cpp_game_dev/store_app/build --check-stamp-file C:/Users/felip/development/cpp/cpp_game_dev/store_app/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
