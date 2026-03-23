@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/felip/development/cpp/cpp_game_dev/ui_dev/build/cmake_install.cmake",
+		"C:/Users/felip/development/cpp/cpp_game_dev/ui_dev/build/third_party/imgui/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

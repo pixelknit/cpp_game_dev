@@ -1,0 +1,32 @@
+[
+{
+  "directory": "C:/Users/felip/development/cpp/cpp_game_dev/build",
+  "command": "\"C:/Program Files/LLVM/bin/clang++.exe\"  @CMakeFiles/store_app.dir/includes_CXX.rsp -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o CMakeFiles/store_app.dir/src/book.cpp.obj -c C:/Users/felip/development/cpp/cpp_game_dev/store_app/src/book.cpp",
+  "file": "C:/Users/felip/development/cpp/cpp_game_dev/store_app/src/book.cpp",
+  "output": "CMakeFiles/store_app.dir/src/book.cpp.obj"
+},
+{
+  "directory": "C:/Users/felip/development/cpp/cpp_game_dev/build",
+  "command": "\"C:/Program Files/LLVM/bin/clang++.exe\"  @CMakeFiles/store_app.dir/includes_CXX.rsp -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o CMakeFiles/store_app.dir/src/book_store.cpp.obj -c C:/Users/felip/development/cpp/cpp_game_dev/store_app/src/book_store.cpp",
+  "file": "C:/Users/felip/development/cpp/cpp_game_dev/store_app/src/book_store.cpp",
+  "output": "CMakeFiles/store_app.dir/src/book_store.cpp.obj"
+},
+{
+  "directory": "C:/Users/felip/development/cpp/cpp_game_dev/build",
+  "command": "\"C:/Program Files/LLVM/bin/clang++.exe\"  @CMakeFiles/store_app.dir/includes_CXX.rsp -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o CMakeFiles/store_app.dir/src/item.cpp.obj -c C:/Users/felip/development/cpp/cpp_game_dev/store_app/src/item.cpp",
+  "file": "C:/Users/felip/development/cpp/cpp_game_dev/store_app/src/item.cpp",
+  "output": "CMakeFiles/store_app.dir/src/item.cpp.obj"
+},
+{
+  "directory": "C:/Users/felip/development/cpp/cpp_game_dev/build",
+  "command": "\"C:/Program Files/LLVM/bin/clang++.exe\"  @CMakeFiles/store_app.dir/includes_CXX.rsp -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o CMakeFiles/store_app.dir/src/main.cpp.obj -c C:/Users/felip/development/cpp/cpp_game_dev/store_app/src/main.cpp",
+  "file": "C:/Users/felip/development/cpp/cpp_game_dev/store_app/src/main.cpp",
+  "output": "CMakeFiles/store_app.dir/src/main.cpp.obj"
+},
+{
+  "directory": "C:/Users/felip/development/cpp/cpp_game_dev/build",
+  "command": "\"C:/Program Files/LLVM/bin/clang++.exe\"  @CMakeFiles/store_app.dir/includes_CXX.rsp -O0 -g -Xclang -gcodeview -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -std=gnu++20 -o CMakeFiles/store_app.dir/src/store.cpp.obj -c C:/Users/felip/development/cpp/cpp_game_dev/store_app/src/store.cpp",
+  "file": "C:/Users/felip/development/cpp/cpp_game_dev/store_app/src/store.cpp",
+  "output": "CMakeFiles/store_app.dir/src/store.cpp.obj"
+}
+]

@@ -1,0 +1,15 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\users\\felip\\development\\cpp\\cpp_game_dev\\modules\\main.cpp",
+        "ProvidedModule": "",
+        "Includes": [],
+        "ImportedModules": [
+            {
+                "Name": "helloworld",
+                "BMI": "C:\\Users\\felip\\development\\cpp\\cpp_game_dev\\modules\\build\\myproject.dir\\Debug\\helloworld.cpp.ifc"
+            }
+        ],
+        "ImportedHeaderUnits": []
+    }
+}
