@@ -1,0 +1,10 @@
+^C:\USERS\FELIP\DEVELOPMENT\CPP\CPP_GAME_DEV\ECS\ENTITY_COMPONENT_SYSTEM_MODULES\BUILD\CMAKEFILES\DD79CF35DC6174B59CAB4F3D71CBBF7F\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/felip/development/cpp/cpp_game_dev/ecs/entity_component_system_modules -BC:/Users/felip/development/cpp/cpp_game_dev/ecs/entity_component_system_modules/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/felip/development/cpp/cpp_game_dev/ecs/entity_component_system_modules/build/ecs_app.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

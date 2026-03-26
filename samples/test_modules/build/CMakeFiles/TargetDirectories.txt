@@ -1,0 +1,3 @@
+C:/Users/felip/development/cpp/cpp_game_dev/samples/test_modules/build/CMakeFiles/ecs_app.dir
+C:/Users/felip/development/cpp/cpp_game_dev/samples/test_modules/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/felip/development/cpp/cpp_game_dev/samples/test_modules/build/CMakeFiles/ZERO_CHECK.dir
