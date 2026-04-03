@@ -1,0 +1,28 @@
+#include "collectible.hpp"
+
+Collectible::Collectible(Vector2 pos):
+    position(pos), radius(16.0f), collected(false), anim({{0, 200, 16,16}, 8})
+{
+
+}
+
+void Collectible::Update(float deltaTime){
+    if (!collected)
+        anim.Update(deltaTime);
+}
+
+void Collectible::Draw(Texture2D &spriteSheet){
+    if (collected)
+        return;
+
+    Rectangle source = anim.GetCurrentFrame();
+    Rectangle dest = {position.x - radius, position.y - radius, radius * 2.0f, radius * 2.0f};
+    DrawTexturePro(spriteSheet, source, dest, {0,0}, 0, WHITE);
+}
+
+bool Collectible::CheckCollision(const Rectangle &player){
+    if (collected)
+        return false;
+    Rectangle itemRect = {position.x - radius, position.y - radius, radius * 2.0f, radius * 2.0f};
+    return CheckCollisionRecs(player, itemRect);
+}

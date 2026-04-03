@@ -1,0 +1,13 @@
+@echo off
+
+echo Building project...
+cmake --build build
+
+echo Moving to Debug folder...
+cd build\Debug
+
+echo Running executable...
+SideScroller.exe
+
+echo Returning to root folder...
+cd ..\..

@@ -1,0 +1,3 @@
+C:/Users/felip/development/cpp/cpp_game_dev/raylib_development/sidecroll_game2D/build/CMakeFiles/SideScroller.dir
+C:/Users/felip/development/cpp/cpp_game_dev/raylib_development/sidecroll_game2D/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/felip/development/cpp/cpp_game_dev/raylib_development/sidecroll_game2D/build/CMakeFiles/ZERO_CHECK.dir

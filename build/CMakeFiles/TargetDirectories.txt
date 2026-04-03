@@ -1,3 +1,0 @@
-C:/Users/felip/development/cpp/cpp_game_dev/build/CMakeFiles/store_app.dir
-C:/Users/felip/development/cpp/cpp_game_dev/build/CMakeFiles/edit_cache.dir
-C:/Users/felip/development/cpp/cpp_game_dev/build/CMakeFiles/rebuild_cache.dir
