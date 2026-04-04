@@ -1,104 +1,102 @@
 #include "player.hpp"
 #include "config.h"
-#include <vector>
-
 
 Player::Player(Texture2D &spriteSheet)
-    : position({100, 300}), velocity({0, 0}), width(80),
-      height(80), facingRight(true), isGrounded(false),
-      canAttack(true), attackTimer(0), state(IDLE),
-      idleAnim({{0, 0, PLAYER_SIZE, PLAYER_SIZE}, 4}),
-      runAnim(
-          {{0, PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE}, 6}),
-      jumpAnim(
-          {{0, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE},
-           11}),
-      attackAnim(
-          {{0, PLAYER_SIZE * 3, PLAYER_SIZE, PLAYER_SIZE},
-           4}) {
+    : position({100, 300}), velocity({0, 0}), width(80), height(80),
+      facingRight(true), isGrounded(false), canAttack(true), attackTimer(0),
+      state(IDLE), idleAnim({{0, 0, PLAYER_SIZE, PLAYER_SIZE}, 4}),
+      runAnim({{0, PLAYER_SIZE, PLAYER_SIZE, PLAYER_SIZE}, 6}),
+      jumpAnim({{0, PLAYER_SIZE * 2, PLAYER_SIZE, PLAYER_SIZE}, 11}),
+      attackAnim({{0, PLAYER_SIZE * 3, PLAYER_SIZE, PLAYER_SIZE}, 4}) {
   currentAnim = &idleAnim;
 }
 
 void Player::Update(float deltaTime, const std::vector<Rectangle> &platforms) {
-  // input handling
+  // Input handling
   velocity.x = 0;
 
   if (IsKeyDown(KEY_A) || IsKeyDown(KEY_LEFT)) {
     velocity.x = -PLAYER_SPEED;
     facingRight = false;
     if (isGrounded && state != ATTACKING)
-      state = RUNNING; // TODO check the proper anim state.
+      state = RUNNING;
   }
-
   if (IsKeyDown(KEY_D) || IsKeyDown(KEY_RIGHT)) {
     velocity.x = PLAYER_SPEED;
     facingRight = true;
     if (isGrounded && state != ATTACKING)
-      state = RUNNING; // TODO check the proper anim state.
+      state = RUNNING;
   }
 
-  // jump mechanism
-
+  // Jump
   if ((IsKeyDown(KEY_SPACE) || IsKeyDown(KEY_W)) && isGrounded &&
       state != ATTACKING) {
     velocity.y = JUMP_FORCE;
     isGrounded = false;
     state = JUMPING;
-    // log for key pressed
   }
 
-  // attack
+  // Attack
   if (IsKeyDown(KEY_J) && canAttack) {
     state = ATTACKING;
     canAttack = false;
-    attackTimer = 0.4f;
+    attackTimer = 0.4f; // Attack duration
   }
 
-  // gravity
-  velocity.y += GRAVITY * deltaTime;
+  if (!IsKeyDown(KEY_W) && !IsKeyDown(KEY_A) && !IsKeyDown(KEY_D) &&
+      !IsKeyDown(KEY_J) && !IsKeyDown(KEY_SPACE)) {
+    state = IDLE;
+  }
 
-  // Update position
+  if (!isGrounded) {
+    velocity.y += GRAVITY * deltaTime;
+  }
+
+  // Store previous position for collision resolution
+  Vector2 prevPos = position;
+
+  // Update X position first (separate axis movement)
   position.x += velocity.x * deltaTime;
+
+  // Check X collisions with platforms
+  Rectangle playerRectX = {position.x, prevPos.y, width, height};
+  for (const auto &plat : platforms) {
+    if (CheckCollisionRecs(playerRectX, plat)) {
+      if (velocity.x > 0)
+        position.x = plat.x - width;
+      else if (velocity.x < 0)
+        position.x = plat.x + plat.width;
+      velocity.x = 0;
+    }
+  }
+
+  // Update Y position
   position.y += velocity.y * deltaTime;
-
-  // Platform collision
   isGrounded = false;
-  Rectangle playerRect = GetBounds();
 
-  for (const auto &platform : platforms) {
-    if (CheckCollisionRecs(playerRect, platform)) {
-      // land on top
-      if (velocity.y > 0 &&
-          playerRect.y + playerRect.height - velocity.y * deltaTime <=
-              platform.y) {
-        position.y = platform.y - height;
+  // Check Y collisions
+  Rectangle playerRectY = {position.x, position.y, width, height};
+  for (const auto &plat : platforms) {
+    if (CheckCollisionRecs(playerRectY, plat)) {
+      // Landing on top
+      if (velocity.y > 0 && prevPos.y + height <= plat.y + 5) { // +5 tolerance
+        position.y = plat.y - height;
         velocity.y = 0;
         isGrounded = true;
-        if (state == JUMPING)
-          state = IDLE; // TODO change the animation state based on design
       }
-
       // Hitting head
-      else if (velocity.y < 0 && playerRect.y - velocity.y * deltaTime >=
-                                     platform.y + platform.height) {
-        position.y = platform.y + platform.height;
+      else if (velocity.y < 0 && prevPos.y >= plat.y + plat.height - 5) {
+        position.y = plat.y + plat.height;
         velocity.y = 0;
-      }
-
-      // Side collision
-      else if (velocity.x > 0) {
-        position.x = platform.x - width;
-      } else if (velocity.x < 0) {
-        position.x = platform.x + platform.width;
       }
     }
   }
 
-  // Screen Boundaries
+  // Screen boundaries
   if (position.x < 0)
     position.x = 0;
   if (position.x > 5000)
-    position.x = 5000;
+    position.x = 5000; // Level width limit
 
   // Attack timer
   if (!canAttack) {
@@ -112,6 +110,7 @@ void Player::Update(float deltaTime, const std::vector<Rectangle> &platforms) {
     }
   }
 
+  // Set animation based on state
   switch (state) {
   case IDLE:
     currentAnim = &idleAnim;
@@ -133,6 +132,7 @@ void Player::Update(float deltaTime, const std::vector<Rectangle> &platforms) {
 void Player::Draw(Texture2D &spriteSheet) {
   Rectangle source = currentAnim->GetCurrentFrame();
 
+  // Flip if facing left
   if (!facingRight)
     source.width = -source.width;
 
@@ -140,6 +140,9 @@ void Player::Draw(Texture2D &spriteSheet) {
   Vector2 origin = {0, 0};
 
   DrawTexturePro(spriteSheet, source, dest, origin, 0.0f, WHITE);
+
+  // Debug hitbox
+  // DrawRectangleLines(position.x, position.y, width, height, RED);
 }
 
 Rectangle Player::GetBounds() const {
@@ -150,7 +153,7 @@ Rectangle Player::GetAttackHitBox() const {
   if (state != ATTACKING)
     return {0, 0, 0, 0};
 
-  float attackRange = 30.0f;
+  float attackRange = 30;
   if (facingRight) {
     return {position.x + width, position.y + 10, attackRange, height - 20};
   } else {
