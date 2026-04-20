@@ -4,6 +4,7 @@
 .vscode/
 .build/
 .cache/
+.vs/
 
 # Compiled Object files
 *.slo

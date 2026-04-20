@@ -1,7 +1,0 @@
-C:/Users/felip/development/cpp/cpp_game_dev/ui_dev/build/CMakeFiles/ui_module.dir
-C:/Users/felip/development/cpp/cpp_game_dev/ui_dev/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/felip/development/cpp/cpp_game_dev/ui_dev/build/CMakeFiles/ZERO_CHECK.dir
-C:/Users/felip/development/cpp/cpp_game_dev/ui_dev/build/third_party/imgui/CMakeFiles/imgui.dir
-C:/Users/felip/development/cpp/cpp_game_dev/ui_dev/build/third_party/imgui/CMakeFiles/imgui_stdlib.dir
-C:/Users/felip/development/cpp/cpp_game_dev/ui_dev/build/third_party/imgui/CMakeFiles/imgui_glfw.dir
-C:/Users/felip/development/cpp/cpp_game_dev/ui_dev/build/third_party/imgui/CMakeFiles/imgui_opengl3.dir

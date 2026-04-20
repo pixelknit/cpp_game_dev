@@ -1,3 +1,0 @@
-C:/Users/felip/development/cpp/cpp_game_dev/modules/build/CMakeFiles/myproject.dir
-C:/Users/felip/development/cpp/cpp_game_dev/modules/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/felip/development/cpp/cpp_game_dev/modules/build/CMakeFiles/ZERO_CHECK.dir
