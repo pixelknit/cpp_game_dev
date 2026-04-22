@@ -4,7 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "InteractableInterface.h"
 #include "InteractionManagerComponent.generated.h"
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnInteractableFound, const FText&, PromptText);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnInteractableLost);
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
@@ -16,13 +20,20 @@ public:
 	// Sets default values for this component's properties
 	UInteractionManagerComponent();
 
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
+	UFUNCTION(BlueprintCallable, Category = "Interaction")
+	void TryInteract();
 
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnInteractableFound OnInteractableFound;
 
+	UPROPERTY(BlueprintAssignable, Category = "Interaction")
+	FOnInteractableLost OnInteractableLost;
+
+	void SetCurrentInteractable(AActor* Actor);
+	void ClearCurrentInteractable(AActor* Actor);
+
+private:
+	UPROPERTY()
+	AActor* CurrentInteractable = nullptr;
 		
 };

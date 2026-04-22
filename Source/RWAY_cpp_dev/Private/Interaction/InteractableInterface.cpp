@@ -3,10 +3,3 @@
 
 #include "Interaction/InteractableInterface.h"
 
-InteractableInterface::InteractableInterface()
-{
-}
-
-InteractableInterface::~InteractableInterface()
-{
-}

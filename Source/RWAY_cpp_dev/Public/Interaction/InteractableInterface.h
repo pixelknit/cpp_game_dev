@@ -3,13 +3,23 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UObject/Interface.h"
+#include "InteractableInterface.generated.h"
 
-/**
- * 
- */
-class InteractableInterface
+UINTERFACE(MinimalAPI, Blueprintable)
+class UInteractableInterface : public UInterface
 {
+	GENERATED_BODY()
+};
+
+class RWAY_CPP_DEV_API IInteractableInterface
+{
+	GENERATED_BODY()
+
 public:
-	InteractableInterface();
-	~InteractableInterface();
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	void Interact(AActor* Interactor);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	FText GetInteractPrompt();
 };
